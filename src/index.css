@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 11%; /* #1e1d2f - Catppuccin Mocha base */
+    --foreground: 240 10% 85%; /* #cad3f5 - Catppuccin Mocha text */
+    --card: 240 10% 15%; /* #24273a - Catppuccin Mocha surface0 */
+    --card-foreground: 240 10% 85%;
+    --popover: 240 10% 11%;
+    --popover-foreground: 240 10% 85%;
+    --primary: 317 39% 72%; /* #cba6f7 - Catppuccin Mocha lavender */
+    --primary-foreground: 240 10% 11%;
+    --secondary: 240 10% 20%; /* #363a4f - Catppuccin Mocha surface1 */
+    --secondary-foreground: 240 10% 85%;
+    --muted: 240 10% 20%;
+    --muted-foreground: 240 7% 68%; /* #a6adc8 - Catppuccin Mocha subtext0 */
+    --accent: 317 39% 72%; /* #cba6f7 - Catppuccin Mocha lavender */
+    --accent-foreground: 240 10% 11%;
+    --destructive: 350 71% 60%; /* #f38ba8 - Catppuccin Mocha red */
+    --destructive-foreground: 240 10% 11%;
+    --border: 240 10% 25%; /* #494d64 - Catppuccin Mocha surface2 */
+    --input: 240 10% 25%;
+    --ring: 265 89% 78%; /* #89b4fa - Catppuccin Mocha blue */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased font-mono;
+    cursor: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-foreground;
+  }
+  p { @apply text-muted-foreground; }
+
+  a, button {
+    cursor: none;
+  }
+}
+
+@layer utilities {
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+}
