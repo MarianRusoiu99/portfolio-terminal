@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const FooterComponent = () => {
    const { setCursorType } = useCursor();
   return (
-    <section id="contact" className="py-16 sm:py-20 border-t border-border/50">
+    <section id="contact" className="py-16 px-4 sm:py-20 border-t border-border/50">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
