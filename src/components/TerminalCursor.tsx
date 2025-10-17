@@ -32,7 +32,7 @@ const TerminalCursor: React.FC = () => {
   return (
     <motion.div
       className={cn(
-        'fixed top-0 left-0 z-[9999] pointer-events-none rounded-sm',
+        'fixed top-0 left-0 z-[9999] pointer-events-none',
         'animate-blink'
       )}
       variants={variants}
