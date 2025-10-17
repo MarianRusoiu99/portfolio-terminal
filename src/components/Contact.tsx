@@ -40,11 +40,53 @@ const ContactComponent = () => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
+    
+    // Send form data to webhook
+    const webhookUrl = import.meta.env.VITE_WEBHOOK_URL;
+    
+    if (!webhookUrl) {
+      console.error('Webhook URL not configured');
+      toast({
+        title: "Configuration Error",
+        description: "Contact form is not properly configured. Please try again later.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Submit to webhook
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...values,
+        timestamp: new Date().toISOString(),
+        source: 'portfolio-website'
+      }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json().catch(() => ({})); // Handle non-JSON responses
+    })
+    .then(() => {
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+      form.reset();
+    })
+    .catch(error => {
+      console.error('Error sending form:', error);
+      toast({
+        title: "Send Failed",
+        description: "There was an error sending your message. Please try again or contact me directly.",
+        variant: "destructive",
+      });
     });
-    form.reset();
   }
 
   return (
