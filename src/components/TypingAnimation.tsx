@@ -17,7 +17,7 @@ export default function TypingAnimation({ text, className, delay = 0 }: ITypingA
     const controls = animate(count, text.length, {
       type: "tween",
       delay: delay,
-      duration: text.length * 0.03, // Faster typing
+      duration: text.length *0.01, // Faster typing
       ease: "linear",
     });
     return controls.stop;

@@ -17,20 +17,10 @@ export const Hero = () => {
 
   return (
     <section className="w-full flex flex-col items-start text-left">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
-        className="flex justify-start mb-6"
-      >
-        <Avatar className="w-24 h-24 lg:w-28 lg:h-28 border-2 border-foreground/50">
-          <AvatarImage src={data.avatar} alt={data.name} />
-          <AvatarFallback>{data.name.substring(0, 2)}</AvatarFallback>
-        </Avatar>
-      </motion.div>
+ 
       
       <h1 className="mb-2 text-3xl md:text-5xl font-bold">
-        <TypingAnimation text={data.headline} />
+        <TypingAnimation text={data.name} />
       </h1>
 
       <p className="text-lg md:text-xl text-muted-foreground mb-6 min-h-[28px]">
