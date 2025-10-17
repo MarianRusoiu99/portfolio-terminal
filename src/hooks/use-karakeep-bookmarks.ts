@@ -21,7 +21,11 @@ export const useKaraKeepBookmarks = (): UseKaraKeepBookmarksReturn => {
       setLoading(true);
       setError(null);
 
-      const webhookUrl = import.meta.env.VITE_KARAKEEP_WEBHOOK_URL;
+      // Use proxy in development to avoid CORS issues
+      const isDev = import.meta.env.DEV;
+      const webhookUrl = isDev 
+        ? '/api/karakeep' // Use Vite proxy in development
+        : import.meta.env.VITE_KARAKEEP_WEBHOOK_URL;
       
       if (!webhookUrl) {
         throw new Error('KaraKeep webhook URL not configured');
@@ -35,6 +39,15 @@ export const useKaraKeepBookmarks = (): UseKaraKeepBookmarksReturn => {
       });
 
       if (!response.ok) {
+        // Handle specific error cases
+        if (response.status === 403) {
+          const errorText = await response.text();
+          if (errorText.includes('IP is not whitelisted')) {
+            throw new Error('Webhook access restricted: IP not whitelisted. Using cached bookmarks.');
+          } else {
+            throw new Error('Access forbidden: Check webhook permissions');
+          }
+        }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
