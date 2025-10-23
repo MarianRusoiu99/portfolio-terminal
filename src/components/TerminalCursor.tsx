@@ -16,7 +16,7 @@ const TerminalCursor: React.FC = () => {
       height: '1.25rem',
       backgroundColor: 'hsl(var(--foreground))',
       opacity: 1,
-      transition: { type: 'tween', ease: 'linear', duration: 0.05 },
+      transition: { type: 'tween', ease: 'linear', duration: 0.03 },
     },
     link: {
       x: x - 4,
@@ -25,7 +25,7 @@ const TerminalCursor: React.FC = () => {
       height: '1.25rem',
       backgroundColor: 'hsl(var(--accent))',
       opacity: 1,
-      transition: { type: 'tween', ease: 'linear', duration: 0.05 },
+      transition: { type: 'tween', ease: 'linear', duration: 0.03 },
     },
   };
 

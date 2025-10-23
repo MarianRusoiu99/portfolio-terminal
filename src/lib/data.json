@@ -46,7 +46,7 @@
       "accomplishments": [
         {
           "title": "AI Storybook App",
-          "description": "Built interactive multimedia synchronization system, integrated Stripe for subscription management, and implemented real-time AI content generation.",
+          "description": "Worked on an interactive multimedia story generation system, integrated Stripe for subscription management, and implemented real-time AI content generation.",
           "tags": ["React", "Nest.js", "OpenAI API", "DALL-E", "PlayHT", "Azure", "Docker", "Stripe"]
         },
         {
@@ -56,7 +56,7 @@
         },
         {
           "title": "Doctor Assist App",
-          "description": "Built a mobile application that transcribes medical consultations into structured forms using AI. Implemented offline-first architecture, secured data storage, and optimized real-time transcription performance.",
+          "description": "Worked on a mobile application that transcribes medical consultations into structured forms using AI. Implemented offline-first architecture, secured data storage, and optimized real-time transcription performance.",
           "tags": ["React Native", "FastAPI", "Whisper API", "AWS S3", "Cognito"]
         },
         {
@@ -79,24 +79,26 @@
   ],
   "skills": [
     "React", "TypeScript", "Next.js", "Node.js", "GraphQL", "PostgreSQL",
-    "MongoDB", "Prisma", "Tailwind CSS", "Framer Motion", "Docker", "AWS", "Figma",
-    "JavaScript", "HTML5", "CSS3", "Python", "Go", "Rust"
+    "Nest.js", "Prisma", "Tailwind CSS", "Framer Motion", "Docker", "AWS", "Figma",
+    "JavaScript", "HTML5", "CSS3", "Three.js", "Go", "Python", "Django", "Nginx",
+    "Git", "CI/CD", "Kubernetes", "Linux", "Bash", "Playwright", "Visual Testing", "CLI Tools"
   ],
   "projects": [
     {
-      "slug": "idea-to-production",
-      "name": "Idea to Production",
-      "description": "A journey of building a full-stack application from scratch.",
-      "component": "IdeaToProduction",
-      "period": "Q2 2024"
+      "slug": "pocketai",
+      "name": "PocketAI Boilerplate",
+      "description": "PocketBase + Rivet + React framework for generative AI applications.",
+      "component": "PocketAI",
+      "period": "2025"
     },
     {
-      "slug": "karakeep",
-      "name": "KaraKeep",
-      "description": "Your Personal Karaoke Companion.",
-      "component": "KaraKeep",
-      "period": "Q1 2024"
+      "slug": "browser-diff",
+      "name": "Browser Diff",
+      "description": "Cross-Browser Visual Regression Testing CLI",
+      "component": "BrowserDiff",
+      "period": "2024"
     }
+  
   ],
   "contact": {
     "title": "Let's Work Together",
@@ -114,42 +116,7 @@
     "button": "Send Message"
   },
   "karaKeepBookmarks": [
-    {
-      "title": "React Docs",
-      "url": "https://react.dev",
-      "category": "Development",
-      "description": "The official documentation for React."
-    },
-    {
-      "title": "Awwwards",
-      "url": "https://awwwards.com",
-      "category": "Inspiration",
-      "description": "A gallery of the best web design in the world."
-    },
-    {
-      "title": "Framer",
-      "url": "https://framer.com",
-      "category": "Design",
-      "description": "A powerful tool for interactive design and prototyping."
-    },
-    {
-      "title": "Vercel",
-      "url": "https://vercel.com",
-      "category": "Deployment",
-      "description": "A platform for frontend developers to deploy websites and web services."
-    },
-    {
-      "title": "Smashing Magazine",
-      "url": "https://www.smashingmagazine.com/",
-      "category": "Articles",
-      "description": "For professional web designers and developers."
-    },
-    {
-      "title": "Stack Overflow",
-      "url": "https://stackoverflow.com/",
-      "category": "Community",
-      "description": "The largest, most trusted online community for developers."
-    }
+    
   ],
   "footer": {
     "title": "Let's build something together.",
