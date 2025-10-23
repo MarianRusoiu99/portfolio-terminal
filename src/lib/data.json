@@ -27,7 +27,7 @@
     { "value": "about", "label": "about.sh" },
     { "value": "experience", "label": "experience.log" },
     { "value": "projects", "label": "projects/" },
-    { "value": "skills", "label": "skills.json" },
+    { "value": "skills", "label": "skills.sh" },
     { "value": "bookmarks", "label": ".bookmarks" },
     { "value": "contact", "label": "contact.sh" }
   ],
@@ -102,7 +102,7 @@
   ],
   "contact": {
     "title": "Let's Work Together",
-    "description": "Open to new opportunities, collaborations, and conversations about building.",
+    "description": "Open to new opportunities, collaborations, and conversations about building web experiences.",
     "email": "hello@valentinanicza.click",
     "location": "Timișoara, Romania , UTC+2 (Eastern European Summer Time - EEST)",
     "schedule": "Book a meeting",
