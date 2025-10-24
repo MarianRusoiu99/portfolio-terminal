@@ -12,6 +12,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Build and Push
+    env:
+      VITE_CONTACT_FORM_WEBHOOK_URL: ${{ secrets.VITE_CONTACT_FORM_WEBHOOK_URL }}
+      VITE_BOOKMARKS_API_URL: ${{ secrets.VITE_BOOKMARKS_API_URL }}
     steps:
       - name: git-checkout
         uses: actions/checkout@v3

@@ -25,7 +25,7 @@ export const useKaraKeepBookmarks = (): UseKaraKeepBookmarksReturn => {
       const isDev = import.meta.env.DEV;
       const webhookUrl = isDev 
         ? '/api/karakeep' // Use Vite proxy in development
-        : import.meta.env.VITE_KARAKEEP_WEBHOOK_URL;
+        : import.meta.env.VITE_BOOKMARKS_API_URL ?? import.meta.env.VITE_KARAKEEP_WEBHOOK_URL;
       
       if (!webhookUrl) {
         throw new Error('KaraKeep webhook URL not configured');

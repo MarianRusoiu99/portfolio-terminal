@@ -42,7 +42,9 @@ const ContactComponent = () => {
     console.log(values);
     
     // Send form data to webhook
-    const webhookUrl = import.meta.env.VITE_WEBHOOK_URL;
+    const webhookUrl =
+      import.meta.env.VITE_CONTACT_FORM_WEBHOOK_URL ??
+      import.meta.env.VITE_WEBHOOK_URL;
     
     if (!webhookUrl) {
       console.error('Webhook URL not configured');
