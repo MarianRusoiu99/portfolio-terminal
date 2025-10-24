@@ -11,11 +11,11 @@
   "socials": [
     {
       "label": "GitHub",
-      "href": "https://github.com"
+      "href": "https://github.com/MarianRusoiu99"
     },
     {
       "label": "LinkedIn",
-      "href": "https://linkedin.com"
+      "href": "https://www.linkedin.com/in/valentin-anicza-153920197/"
     },
     {
       "label": "Email",
@@ -24,12 +24,12 @@
   ],
   "about": "I'm a developer with a passion for creating beautiful, functional, and accessible digital experiences. With a background in both design and engineering, I bridge the gap between creative vision and technical execution. I thrive on turning complex problems into elegant solutions and am always eager to learn new technologies.",
   "commands": [
-    { "value": "about", "label": "about.sh" },
-    { "value": "experience", "label": "experience.log" },
-    { "value": "projects", "label": "projects/" },
-    { "value": "skills", "label": "skills.sh" },
-    { "value": "bookmarks", "label": ".bookmarks" },
-    { "value": "contact", "label": "contact.sh" }
+    { "value": "about", "label": "about.sh", "path": "/" },
+    { "value": "experience", "label": "experience.log", "path": "/experience" },
+    { "value": "projects", "label": "projects/", "path": "/projects" },
+    { "value": "skills", "label": "skills.sh", "path": "/skills" },
+    { "value": "bookmarks", "label": ".bookmarks", "path": "/bookmarks" },
+    { "value": "contact", "label": "contact.sh", "path": "/contact" }
   ],
   "experience": [
     {

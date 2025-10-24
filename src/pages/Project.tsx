@@ -45,7 +45,7 @@ const ProjectPage = () => {
         <div className="p-4 md:p-6">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
             <Link 
-              to="/" 
+              to="/projects" 
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
               onMouseEnter={() => setCursorType('link')}
               onMouseLeave={() => setCursorType('default')}

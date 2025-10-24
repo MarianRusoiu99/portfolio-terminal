@@ -23,7 +23,7 @@ const SkillsComponent = () => {
     <div className="py-6">
       <div className="flex items-center gap-2 mb-6">
         <span className="text-primary">$</span>
-        <p className="text-foreground">less ./skills</p>
+        <p className="text-foreground">less ./skills.txt</p>
       </div>
       <div 
         className="flex flex-wrap justify-start gap-x-4 gap-y-2"

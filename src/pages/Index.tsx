@@ -1,19 +1,29 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Projects } from "@/components/Projects";
-import { Contact } from "@/components/Contact";
-import { Experience } from "@/components/Experience";
-import { Skills } from "@/components/Skills";
-import { KaraKeepBookmarks } from "@/components/KaraKeepBookmarks";
 import { Footer } from "@/components/Footer";
 import { Minimize2, Maximize2, X } from "lucide-react";
-import data from "@/lib/data.json";
 import { useCursor } from "@/context/CursorContext";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { tabRoutes, defaultTabRoute } from "@/lib/routes";
 
 const Index = () => {
   const { setCursorType } = useCursor();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const activeTab = tabRoutes.find((route) => route.href === location.pathname) ?? defaultTabRoute;
+  const fallbackValue = defaultTabRoute?.value ?? tabRoutes[0]?.value ?? "";
+  const activeValue = activeTab?.value ?? fallbackValue;
+
+  const handleTabChange = (nextValue: string) => {
+    const target = tabRoutes.find((route) => route.value === nextValue);
+    if (!target) {
+      return;
+    }
+
+    navigate(target.href);
+  };
 
   return (
     <div className="flex justify-center p-2 sm:p-4 md:p-8">
@@ -32,7 +42,7 @@ const Index = () => {
             <Hero />
           </div>
 
-          <Tabs defaultValue="about" className="w-full">
+          <Tabs value={activeValue} onValueChange={handleTabChange} className="w-full">
             {/* Desktop Tabs */}
             <div className="hidden md:block sticky top-0 z-10 bg-card/90 backdrop-blur-sm border-y border-border">
               <ScrollArea className="w-full whitespace-nowrap">
@@ -41,13 +51,13 @@ const Index = () => {
                   onMouseEnter={() => setCursorType("link")}
                   onMouseLeave={() => setCursorType("default")}
                 >
-                  {data.commands.map((command) => (
+                  {tabRoutes.map((route) => (
                     <TabsTrigger
-                      key={command.value}
-                      value={command.value}
+                      key={route.value}
+                      value={route.value}
                       className="data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none hover:text-foreground h-full rounded-none border-b-2 border-transparent data-[state=active]:border-primary px-4"
                     >
-                      {command.label}
+                      {route.label}
                     </TabsTrigger>
                   ))}
                 </TabsList>
@@ -62,25 +72,20 @@ const Index = () => {
                   onMouseEnter={() => setCursorType("link")}
                   onMouseLeave={() => setCursorType("default")}
                 >
-                  {data.commands.map((command) => (
+                  {tabRoutes.map((route) => (
                     <TabsTrigger
-                      key={command.value}
-                      value={command.value}
+                      key={route.value}
+                      value={route.value}
                       className="data-[state=active]:bg-transparent data-[state=active]:text-primary data-[state=active]:shadow-none hover:text-foreground h-10 rounded-none border-l-2 border-transparent data-[state=active]:border-primary justify-start w-full"
                     >
-                      {command.label}
+                      {route.label}
                     </TabsTrigger>
                   ))}
                 </TabsList>
             </div>
 
             <div className="p-4 md:p-6">
-              <TabsContent value="about" className="mt-0"><About /></TabsContent>
-              <TabsContent value="experience" className="mt-0"><Experience /></TabsContent>
-              <TabsContent value="projects" className="mt-0"><Projects /></TabsContent>
-              <TabsContent value="skills" className="mt-0"><Skills /></TabsContent>
-              <TabsContent value="bookmarks" className="mt-0"><KaraKeepBookmarks /></TabsContent>
-              <TabsContent value="contact" className="mt-0"><Contact /></TabsContent>
+              <Outlet />
             </div>
           </Tabs>
           
