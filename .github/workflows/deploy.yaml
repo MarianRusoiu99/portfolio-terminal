@@ -3,7 +3,7 @@ name: Generate a build and push to another branch
 on:
   push:
     branches:
-      - master # The branch name your are commit the new changes
+      - main # The branch name your are commit the new changes
 
 permissions:
   contents: write   # 👈 important: allows pushing back to repo
@@ -12,9 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Build and Push
-    env:
-      VITE_CONTACT_FORM_WEBHOOK_URL: ${{ secrets.VITE_CONTACT_FORM_WEBHOOK_URL }}
-      VITE_BOOKMARKS_API_URL: ${{ secrets.VITE_BOOKMARKS_API_URL }}
     steps:
       - name: git-checkout
         uses: actions/checkout@v3
@@ -24,6 +21,9 @@ jobs:
 
       - name: Build
         run: npm run build # The build command of your project
+        env:
+          VITE_CONTACT_FORM_WEBHOOK_URL: ${{ secrets.VITE_CONTACT_FORM_WEBHOOK_URL }}
+          VITE_BOOKMARKS_API_URL: ${{ secrets.VITE_BOOKMARKS_API_URL }}
 
       - name: Push
         uses: s0/git-publish-subdir-action@develop
