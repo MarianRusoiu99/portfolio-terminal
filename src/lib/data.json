@@ -89,6 +89,7 @@
       "name": "PocketAI Boilerplate",
       "description": "PocketBase + Rivet + React framework for generative AI applications.",
       "component": "PocketAI",
+      "githubUrl": "https://github.com/MarianRusoiu99/pocketAi",
       "period": "2025"
     },
     {
@@ -96,7 +97,8 @@
       "name": "Browser Diff",
       "description": "Cross-Browser Visual Regression Testing CLI",
       "component": "BrowserDiff",
-      "period": "2024"
+      "githubUrl": "https://github.com/MarianRusoiu99/browserdiff",
+      "period": "2025"
     }
   
   ],

@@ -43,15 +43,30 @@ const ProjectPage = () => {
           </div>
         </div>
         <div className="p-4 md:p-6">
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6"
-            onMouseEnter={() => setCursorType('link')}
-            onMouseLeave={() => setCursorType('default')}
-          >
-            <ArrowLeft size={16} />
-            cd ..
-          </Link>
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
+              onMouseEnter={() => setCursorType('link')}
+              onMouseLeave={() => setCursorType('default')}
+            >
+              <ArrowLeft size={16} />
+              cd ..
+            </Link>
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                onMouseEnter={() => setCursorType('link')}
+                onMouseLeave={() => setCursorType('default')}
+              >
+                <span className="uppercase tracking-wide">git</span>
+                <span>{project.githubUrl}</span>
+              </a>
+            )}
+          </div>
           {ProjectComponent ? <ProjectComponent /> : (
             <div>
               <h1 className="text-2xl font-bold text-accent">{project.name}</h1>
