@@ -1,0 +1,67 @@
+{
+  "name": "Valentin Anicza Portfolio Routes",
+  "description": "Static manifest enumerating the portfolio's public routes for hosting integrations and SEO tooling.",
+  "generatedAt": "2025-10-26T00:00:00.000Z",
+  "routes": [
+    {
+      "path": "/",
+      "label": "about.sh",
+      "section": "About",
+      "type": "static",
+      "description": "Primary entry point rendering the about terminal tab and general overview."
+    },
+    {
+      "path": "/experience",
+      "label": "experience.log",
+      "section": "Experience",
+      "type": "static",
+      "description": "Timeline of professional experience entries."
+    },
+    {
+      "path": "/projects",
+      "label": "projects/",
+      "section": "Projects",
+      "type": "static",
+      "description": "Showcase of highlighted projects."
+    },
+    {
+      "path": "/skills",
+      "label": "skills.sh",
+      "section": "Skills",
+      "type": "static",
+      "description": "List of technical skills and toolsets."
+    },
+    {
+      "path": "/bookmarks",
+      "label": ".bookmarks",
+      "section": "Bookmarks",
+      "type": "static",
+      "description": "Curated KaraKeep bookmarks feed."
+    },
+    {
+      "path": "/contact",
+      "label": "contact.sh",
+      "section": "Contact",
+      "type": "static",
+      "description": "Contact form and reach-out details."
+    },
+    {
+      "path": "/projects/:slug",
+      "section": "Project Detail",
+      "type": "dynamic",
+      "description": "Dynamic route expanding project case studies by slug."
+    },
+    {
+      "path": "/experience/:slug",
+      "section": "Experience Detail",
+      "type": "dynamic",
+      "description": "Dynamic route outlining a single experience entry by slug."
+    },
+    {
+      "path": "*",
+      "section": "Not Found",
+      "type": "fallback",
+      "description": "Catch-all route for 404 responses."
+    }
+  ]
+}
