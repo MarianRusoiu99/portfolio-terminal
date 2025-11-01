@@ -37,7 +37,7 @@ const Index = () => {
           </div>
         </div>
 
-        <ScrollArea className="flex-grow">
+        <div className="flex-grow">
           <div className="p-4 md:p-6">
             <Hero />
           </div>
@@ -90,7 +90,7 @@ const Index = () => {
           </Tabs>
           
           <Footer />
-        </ScrollArea>
+        </div>
       </div>
     </div>
   );

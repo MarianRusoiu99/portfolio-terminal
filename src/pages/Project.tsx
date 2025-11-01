@@ -58,12 +58,12 @@ const ProjectPage = () => {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground "
                 onMouseEnter={() => setCursorType('link')}
                 onMouseLeave={() => setCursorType('default')}
               >
-                <span className="uppercase tracking-wide">git</span>
-                <span>{project.githubUrl}</span>
+  
+                <span className="break-all">Github: {project.githubUrl}</span>
               </a>
             )}
           </div>

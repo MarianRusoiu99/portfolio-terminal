@@ -37,8 +37,7 @@ const ProjectsComponent = () => {
                 onMouseEnter={() => setCursorType('link')}
                 onMouseLeave={() => setCursorType('default')}
               >
-                <span className="text-primary">git</span>
-                <span>{project.githubUrl}</span>
+                <span className="break-all">Github: {project.githubUrl}</span>
               </a>
             )}
           </div>
