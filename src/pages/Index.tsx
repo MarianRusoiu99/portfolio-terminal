@@ -29,10 +29,10 @@ const Index = () => {
     <div className="flex justify-center p-2 sm:p-4 md:p-8">
       <div className="w-full max-w-5xl min-h-[80vh] bg-card/50 border border-border rounded-lg shadow-2xl shadow-black/50 overflow-hidden flex flex-col">
         <div className="h-8 bg-secondary flex items-center justify-between px-4 border-b border-border flex-shrink-0">
-          <p className="text-sm text-muted-foreground">~ (zsh)</p>
+          <p className="text-sm text-muted-foreground">
+            <span className="text-primary">$</span> ~{location.pathname}</p>
           <div className="flex items-center gap-2">
-            <Minimize2 className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
-            <Maximize2 className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
+           
             <X className="w-4 h-4 text-muted-foreground hover:text-destructive transition-colors" />
           </div>
         </div>

@@ -8,10 +8,6 @@ const ProjectsComponent = () => {
 
   return (
     <div className="py-6">
-      <div className="flex items-center gap-2 mb-6">
-        <span className="text-primary">$</span>
-        <p className="text-foreground">ls -l ./projects</p>
-      </div>
       <div 
         className="relative space-y-6"
       >

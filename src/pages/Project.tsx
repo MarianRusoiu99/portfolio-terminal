@@ -1,15 +1,16 @@
 import React from 'react';
 import { useParams, Link } from "react-router-dom";
 import { BrowserDiff } from "@/components/BrowserDiff";
-
+import { ResumeManager } from "@/components/ResumeManager";
 import { PocketAI } from "@/components/PocketAI";
 import { ArrowLeft, Minimize2, Maximize2, X } from "lucide-react";
 import data from "@/lib/data.json";
 import { useCursor } from '@/context/CursorContext';
 
 const componentMap = {
-  BrowserDiff,
-  PocketAI,
+  // BrowserDiff,
+  // PocketAI,
+  ResumeManager
 };
 
 const ProjectPage = () => {

@@ -5,35 +5,35 @@
   "routes": [
     {
       "path": "/",
-      "label": "about.sh",
+      "label": "about",
       "section": "About",
       "type": "static",
       "description": "Primary entry point rendering the about terminal tab and general overview."
     },
     {
       "path": "/experience",
-      "label": "experience.log",
+      "label": "experience",
       "section": "Experience",
       "type": "static",
       "description": "Timeline of professional experience entries."
     },
     {
       "path": "/projects",
-      "label": "projects/",
+      "label": "projects",
       "section": "Projects",
       "type": "static",
       "description": "Showcase of highlighted projects."
     },
     {
       "path": "/skills",
-      "label": "skills.sh",
+      "label": "skills",
       "section": "Skills",
       "type": "static",
       "description": "List of technical skills and toolsets."
     },
     {
       "path": "/bookmarks",
-      "label": ".bookmarks",
+      "label": "bookmarks",
       "section": "Bookmarks",
       "type": "static",
       "description": "Curated KaraKeep bookmarks feed."

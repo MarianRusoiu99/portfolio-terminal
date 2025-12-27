@@ -93,10 +93,6 @@ const ContactComponent = () => {
 
   return (
     <div className="py-6">
-      <div className="flex items-center gap-2 mb-6">
-        <span className="text-primary">$</span>
-        <p className="text-foreground">./contact.sh</p>
-      </div>
       <p className="text-lg max-w-2xl mb-8 text-muted-foreground">{data.contact.description}</p>
       <div className="grid md:grid-cols-3 gap-8 md:gap-12">
         <div className="md:col-span-1 space-y-8">

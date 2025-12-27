@@ -31,9 +31,7 @@ const KaraKeepBookmarksComponent = () => {
   return (
     <div className="py-6">
       <div className="flex items-center gap-2 mb-6">
-        <span className="text-primary">$</span>
-        <p className="text-foreground">cat ~/.bookmarks</p>
-        {error && (
+         {error && (
           <Button
             variant="ghost" 
             size="sm"

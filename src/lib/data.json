@@ -1,3 +1,5 @@
+
+
 {
   "name": "Valentin Anicza",
   "headline": "I Build Things for the Web",
@@ -24,12 +26,12 @@
   ],
   "about": "I'm a developer with a passion for creating beautiful, functional, and accessible digital experiences. With a background in both design and engineering, I bridge the gap between creative vision and technical execution. I thrive on turning complex problems into elegant solutions and am always eager to learn new technologies.",
   "commands": [
-    { "value": "about", "label": "about.sh", "path": "/" },
-    { "value": "experience", "label": "experience.log", "path": "/experience" },
-    { "value": "projects", "label": "projects/", "path": "/projects" },
-    { "value": "skills", "label": "skills.sh", "path": "/skills" },
-    { "value": "bookmarks", "label": ".bookmarks", "path": "/bookmarks" },
-    { "value": "contact", "label": "contact.sh", "path": "/contact" }
+    { "value": "about", "label": "about", "path": "/" },
+    { "value": "experience", "label": "experience", "path": "/experience" },
+    { "value": "projects", "label": "projects", "path": "/projects" },
+    { "value": "skills", "label": "skills", "path": "/skills" },
+    { "value": "bookmarks", "label": "bookmarks", "path": "/bookmarks" },
+    { "value": "contact", "label": "contact", "path": "/contact" }
   ],
   "experience": [
     {
@@ -84,21 +86,14 @@
     "Git", "CI/CD", "Kubernetes", "Linux", "Bash", "Playwright", "Visual Testing", "CLI Tools"
   ],
   "projects": [
-    {
-      "slug": "pocketai",
-      "name": "PocketAI Boilerplate",
-      "description": "PocketBase + Rivet + React framework for generative AI applications.",
-      "component": "PocketAI",
-      "githubUrl": "https://github.com/MarianRusoiu99/pocketAi",
-      "period": "2025"
-    },
-    {
-      "slug": "browser-diff",
-      "name": "Browser Diff",
-      "description": "Cross-Browser Visual Regression Testing CLI",
-      "component": "BrowserDiff",
-      "githubUrl": "https://github.com/MarianRusoiu99/browserdiff",
-      "period": "2025"
+   
+     {
+      "slug": "resume-manager",
+      "name": "Resume Manager",
+      "description": "AI-Powered Resume Builder & Optimizer",
+      "component": "ResumeManager",
+      "githubUrl": "https://github.com/MarianRusoiu99/resume-manager",
+      "period": "08/2025 - Present"
     }
   
   ],

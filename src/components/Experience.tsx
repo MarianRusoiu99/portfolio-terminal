@@ -9,10 +9,6 @@ const ExperienceComponent = () => {
 
   return (
     <div className="py-6">
-      <div className="flex items-center gap-2 mb-6">
-        <span className="text-primary">$</span>
-        <p className="text-foreground">cat ./experience.log</p>
-      </div>
       <div className="relative space-y-8">
         {data.experience.map((exp, index) => (
           <Link

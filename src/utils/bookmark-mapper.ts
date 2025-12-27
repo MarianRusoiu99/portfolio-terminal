@@ -245,8 +245,6 @@ export function mapWebhookToBookmarks(response: WebhookResponse): DisplayBookmar
       bookmarksList = [response];
     }
     
-    console.log('Raw webhook response:', response);
-    console.log('Found bookmarks list:', bookmarksList);
     
     // Map each bookmark to DisplayBookmark format
     return bookmarksList.map((bookmark, index): DisplayBookmark => {
@@ -260,8 +258,7 @@ export function mapWebhookToBookmarks(response: WebhookResponse): DisplayBookmar
         dateAdded: extractDate(bookmark),
       };
       
-      console.log(`Mapped bookmark ${index}:`, mapped);
-      return mapped;
+       return mapped;
     }).filter(bookmark => {
       const isValid = bookmark.title !== 'Untitled Bookmark' || bookmark.url !== '#';
       if (!isValid) {

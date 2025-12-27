@@ -9,7 +9,6 @@ import { About } from "@/components/About";
 import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
-import { KaraKeepBookmarks } from "@/components/KaraKeepBookmarks";
 import { Contact } from "@/components/Contact";
 
 type TabComponent = ComponentType;
@@ -34,7 +33,6 @@ const tabComponentMap: Record<string, TabComponent | undefined> = {
   experience: Experience,
   projects: Projects,
   skills: Skills,
-  bookmarks: KaraKeepBookmarks,
   contact: Contact,
 };
 
