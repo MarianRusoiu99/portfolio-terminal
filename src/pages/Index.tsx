@@ -2,7 +2,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Hero } from "@/components/Hero";
 import { Footer } from "@/components/Footer";
-import { Minimize2, Maximize2, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useCursor } from "@/context/CursorContext";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { tabRoutes, defaultTabRoute } from "@/lib/routes";
@@ -11,7 +11,6 @@ const Index = () => {
   const { setCursorType } = useCursor();
   const navigate = useNavigate();
   const location = useLocation();
-
   const activeTab = tabRoutes.find((route) => route.href === location.pathname) ?? defaultTabRoute;
   const fallbackValue = defaultTabRoute?.value ?? tabRoutes[0]?.value ?? "";
   const activeValue = activeTab?.value ?? fallbackValue;
@@ -21,7 +20,6 @@ const Index = () => {
     if (!target) {
       return;
     }
-
     navigate(target.href);
   };
 
