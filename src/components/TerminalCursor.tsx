@@ -8,36 +8,29 @@ const TerminalCursor: React.FC = () => {
   const { x, y } = useMousePosition();
   const { cursorType } = useCursor();
 
-  const variants = {
-    default: {
-      x: x - 4,
-      y: y - 8,
-      width: '8px',
-      height: '1.25rem',
-      backgroundColor: 'hsl(var(--foreground))',
-      opacity: 1,
-      transition: { type: 'tween', ease: 'linear', duration: 0.03 },
-    },
-    link: {
-      x: x - 4,
-      y: y - 8,
-      width: '8px',
-      height: '1.25rem',
-      backgroundColor: 'hsl(var(--accent))',
-      opacity: 1,
-      transition: { type: 'tween', ease: 'linear', duration: 0.03 },
-    },
-  };
+  const isLink = cursorType === 'link';
 
   return (
-    <motion.div
-      className={cn(
-        'fixed top-0 left-0 z-[9999] pointer-events-none',
-        'animate-blink'
+    <>
+      <motion.div
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-foreground z-[9999] pointer-events-none"
+        animate={{
+          x: x - 4,
+          y: y - 4,
+        }}
+        transition={{ type: 'spring', stiffness: 500, damping: 28 }}
+      />
+      {isLink && (
+        <motion.div
+          className="fixed top-0 left-0 w-8 h-8 rounded-full border border-primary/50 z-[9998] pointer-events-none"
+          animate={{
+            x: x - 16,
+            y: y - 16,
+          }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        />
       )}
-      variants={variants}
-      animate={cursorType}
-    />
+    </>
   );
 };
 

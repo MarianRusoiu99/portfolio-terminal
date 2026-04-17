@@ -24,7 +24,7 @@
       "href": "mailto:hello@valentinanicza.click"
     }
   ],
-  "about": "I'm a developer with a passion for creating beautiful, functional, and accessible digital experiences. With a background in both design and engineering, I bridge the gap between creative vision and technical execution. I thrive on turning complex problems into elegant solutions and am always eager to learn new technologies.",
+  "about": "I build beautiful, functional, and accessible digital experiences. By bridging the gap between creative vision and technical execution, I turn complex problems into elegant solutions.",
   "commands": [
     { "value": "about", "label": "about", "path": "/" },
     { "value": "experience", "label": "experience", "path": "/experience" },

@@ -1,48 +1,60 @@
 import React from "react";
 import { motion } from "framer-motion";
 import data from "@/lib/data.json";
-import { useCursor } from "@/context/CursorContext";
 
-const fadeInAnimationVariants = {
-  initial: {
-    opacity: 0,
-    y: 10,
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.02,
+    },
   },
-  animate: (index: number) => ({
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10, scale: 0.95 },
+  visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      delay: 0.03 * index,
+      type: "spring",
+      stiffness: 400,
+      damping: 25,
     },
-  }),
+  },
 };
 
 const SkillsComponent = () => {
-  const { setCursorType } = useCursor();
   return (
-    <div className="py-6">
+    <div className="flex flex-col gap-8 w-full">
+      <div className="mb-1">
+        <h2 className="text-3xl font-bold tracking-tight text-foreground mb-3">Skills</h2>
+        <p className="text-base text-muted-foreground/80">Technologies and tools I work with daily.</p>
+      </div>
 
-      <div 
-        className="flex flex-wrap justify-start gap-x-4 gap-y-2"
-        onMouseEnter={() => setCursorType('default')}
-        onMouseLeave={() => setCursorType('default')}
-      >
-        <span className="text-muted-foreground">{`[`}</span>
-        {data.skills.map((skill, index) => (
-          <motion.div
-            key={skill}
-            variants={fadeInAnimationVariants}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            custom={index}
-            className="flex items-center"
-          >
-            <span className="text-accent">"{skill}"</span>
-            {index < data.skills.length - 1 && <span className="text-muted-foreground">,</span>}
-          </motion.div>
-        ))}
-        <span className="text-muted-foreground">{`]`}</span>
+      <div className="relative">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-wrap gap-3 relative z-10"
+        >
+          {data.skills.map((skill, index) => (
+            <motion.div
+              key={skill}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="group"
+            >
+              <div className="px-4 py-2 text-sm font-medium bg-secondary/10 text-foreground/90 rounded-full border border-white/5 hover:border-primary/30 hover:bg-secondary/30 hover:text-primary transition-all cursor-default flex items-center">
+                <span className="font-mono text-xs opacity-50 mr-2 group-hover:text-primary group-hover:opacity-100 transition-colors">{'/>'}</span>
+                {skill}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

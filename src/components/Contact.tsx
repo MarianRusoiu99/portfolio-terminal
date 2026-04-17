@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import data from "@/lib/data.json";
-import { Mail, MapPin, Calendar } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { useCursor } from "@/context/CursorContext";
 
 const formSchema = z.object({
@@ -41,7 +41,6 @@ const ContactComponent = () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     
-    // Send form data to webhook
     const webhookUrl =
       import.meta.env.VITE_CONTACT_FORM_WEBHOOK_URL ??
       import.meta.env.VITE_WEBHOOK_URL;
@@ -56,7 +55,6 @@ const ContactComponent = () => {
       return;
     }
 
-    // Submit to webhook
     fetch(webhookUrl, {
       method: 'POST',
       headers: {
@@ -72,7 +70,7 @@ const ContactComponent = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      return response.json().catch(() => ({})); // Handle non-JSON responses
+      return response.json().catch(() => ({}));
     })
     .then(() => {
       toast({
@@ -92,60 +90,46 @@ const ContactComponent = () => {
   }
 
   return (
-    <div className="py-6">
-      <p className="text-lg max-w-2xl mb-8 text-muted-foreground">{data.contact.description}</p>
-      <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-        <div className="md:col-span-1 space-y-8">
-          <div className="flex items-start gap-4">
-            <Mail className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-            <div>
-              <h4 className="font-bold text-foreground">Email</h4>
-              <a
-                href={`mailto:${data.contact.email}`}
-                className="text-muted-foreground hover:text-primary transition-colors break-all"
-                onMouseEnter={() => setCursorType("link")}
-                onMouseLeave={() => setCursorType("default")}
-              >
-                {data.contact.email}
-              </a>
-            </div>
+    <div className="flex flex-col gap-8 w-full">
+      <div className="mb-1 relative z-10">
+        <h2 className="text-3xl font-bold tracking-tight text-foreground mb-3">Contact</h2>
+        <p className="text-base text-muted-foreground/80 leading-relaxed">{data.contact.description}</p>
+      </div>
+
+      <div className="space-y-5">
+          <div className="flex items-center gap-4">
+            <Mail className="w-5 h-5 text-primary" />
+            <a
+              href={`mailto:${data.contact.email}`}
+              className="text-base text-muted-foreground hover:text-primary"
+              onMouseEnter={() => setCursorType("link")}
+              onMouseLeave={() => setCursorType("default")}
+            >
+              {data.contact.email}
+            </a>
           </div>
-          <div className="flex items-start gap-4">
-            <MapPin className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-            <div>
-              <h4 className="font-bold text-foreground">Location</h4>
-              <p className="text-muted-foreground">{data.contact.location}</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-4">
-            <Calendar className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
-            <div>
-              <h4 className="font-bold text-foreground">Schedule a Call</h4>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                onMouseEnter={() => setCursorType("link")}
-                onMouseLeave={() => setCursorType("default")}
-              >
-                {data.contact.schedule}
-              </a>
-            </div>
+          
+          <div className="flex items-center gap-4">
+            <MapPin className="w-5 h-5 text-primary" />
+            <p className="text-base text-muted-foreground">{data.contact.location}</p>
           </div>
         </div>
-        <div className="md:col-span-2">
+
+        <div>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <div className="grid sm:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{data.contactForm.name.label}</FormLabel>
+                      <FormLabel className="text-sm text-foreground/80">{data.contactForm.name.label}</FormLabel>
                       <FormControl>
                         <Input
                           placeholder={data.contactForm.name.placeholder}
                           {...field}
+                          className="bg-secondary/10 border-white/5 focus-visible:ring-primary text-base h-12 rounded-full"
                           onMouseEnter={() => setCursorType("link")}
                           onMouseLeave={() => setCursorType("default")}
                         />
@@ -159,11 +143,12 @@ const ContactComponent = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{data.contactForm.email.label}</FormLabel>
+                      <FormLabel className="text-sm text-foreground/80">{data.contactForm.email.label}</FormLabel>
                       <FormControl>
                         <Input
                           placeholder={data.contactForm.email.placeholder}
                           {...field}
+                          className="bg-secondary/10 border-white/5 focus-visible:ring-primary text-base h-12 rounded-full"
                           onMouseEnter={() => setCursorType("link")}
                           onMouseLeave={() => setCursorType("default")}
                         />
@@ -178,11 +163,12 @@ const ContactComponent = () => {
                 name="subject"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{data.contactForm.subject.label}</FormLabel>
+                    <FormLabel className="text-sm text-foreground/80">{data.contactForm.subject.label}</FormLabel>
                     <FormControl>
                       <Input
                         placeholder={data.contactForm.subject.placeholder}
                         {...field}
+                        className="bg-secondary/10 border-white/5 focus-visible:ring-primary text-base h-12 rounded-full"
                         onMouseEnter={() => setCursorType("link")}
                         onMouseLeave={() => setCursorType("default")}
                       />
@@ -196,11 +182,11 @@ const ContactComponent = () => {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{data.contactForm.message.label}</FormLabel>
+                    <FormLabel className="text-sm text-foreground/80">{data.contactForm.message.label}</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder={data.contactForm.message.placeholder}
-                        className="min-h-[120px]"
+                        className="min-h-[140px] bg-secondary/10 border-white/5 focus-visible:ring-primary text-base rounded-xl resize-none"
                         {...field}
                         onMouseEnter={() => setCursorType("link")}
                         onMouseLeave={() => setCursorType("default")}
@@ -212,6 +198,7 @@ const ContactComponent = () => {
               />
               <Button
                 type="submit"
+                className="w-full sm:w-auto rounded-full px-8 h-12 bg-primary/90 hover:bg-primary text-primary-foreground transition-all font-medium"
                 onMouseEnter={() => setCursorType("link")}
                 onMouseLeave={() => setCursorType("default")}
               >
@@ -220,7 +207,6 @@ const ContactComponent = () => {
             </form>
           </Form>
         </div>
-      </div>
     </div>
   );
 };

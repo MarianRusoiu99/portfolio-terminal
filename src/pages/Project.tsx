@@ -1,13 +1,11 @@
 import React from 'react';
 import { useParams, Link } from "react-router-dom";
 import { ResumeManager } from "@/components/ResumeManager";
-import { ArrowLeft, Minimize2, Maximize2, X } from "lucide-react";
 import data from "@/lib/data.json";
 import { useCursor } from '@/context/CursorContext';
+import { Github, ExternalLink, ArrowLeft } from "lucide-react";
 
 const componentMap = {
-  // BrowserDiff,
-  // PocketAI,
   ResumeManager
 };
 
@@ -18,8 +16,19 @@ const ProjectPage = () => {
 
   if (!project) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <p>Project not found. <Link to="/" className="underline">Go back</Link></p>
+      <div className="flex flex-col gap-8 w-full">
+        <Link 
+          to="/projects" 
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors w-fit group"
+          onMouseEnter={() => setCursorType('link')}
+          onMouseLeave={() => setCursorType('default')}
+        >
+          <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
+          <span className="font-medium text-sm tracking-wide">Back to Projects</span>
+        </Link>
+        <div className="flex items-center justify-center py-20">
+          <p className="text-muted-foreground">Project not found.</p>
+        </div>
       </div>
     );
   }
@@ -27,52 +36,63 @@ const ProjectPage = () => {
   const ProjectComponent = componentMap[project.component as keyof typeof componentMap];
 
   return (
-    <div className="flex justify-center p-2 sm:p-4 md:p-8">
-      <div className="w-full max-w-5xl min-h-[80vh] bg-card/50 border border-border rounded-lg shadow-2xl shadow-black/50 overflow-hidden">
-        <div className="h-8 bg-secondary flex items-center justify-between px-4 border-b border-border">
-          <p className="text-sm text-muted-foreground">
-            ~/projects/{project.slug}
-          </p>
-          <div className="flex items-center gap-2">
-            <Minimize2 className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
-            <Maximize2 className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
-            <Link to="/">
-              <X className="w-4 h-4 text-muted-foreground hover:text-destructive transition-colors" />
-            </Link>
-          </div>
-        </div>
-        <div className="p-4 md:p-6">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <Link 
-              to="/projects" 
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
+    <div className="flex flex-col gap-8 w-full">
+      <Link 
+        to="/projects" 
+        className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors w-fit group"
+        onMouseEnter={() => setCursorType('link')}
+        onMouseLeave={() => setCursorType('default')}
+      >
+        <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
+        <span className="font-medium text-sm tracking-wide">Back to Projects</span>
+      </Link>
+      
+      <div className="flex flex-col gap-4 w-full">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+          {project.name}
+        </h1>
+        <div className="flex flex-wrap items-center gap-4 mt-2">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors bg-secondary/50 px-4 py-2 rounded-full border border-border"
               onMouseEnter={() => setCursorType('link')}
               onMouseLeave={() => setCursorType('default')}
             >
-              <ArrowLeft size={16} />
-              cd ..
-            </Link>
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground "
-                onMouseEnter={() => setCursorType('link')}
-                onMouseLeave={() => setCursorType('default')}
-              >
-                <span className="break-all">Github: {project.githubUrl}</span>
-              </a>
-            )}
-          </div>
-          {ProjectComponent ? <ProjectComponent /> : (
-            <div>
-              <h1 className="text-2xl font-bold text-accent">{project.name}</h1>
-              <p className="text-muted-foreground mt-2">{project.description}</p>
-            </div>
+              <Github size={16} />
+              <span>View Source</span>
+            </a>
+          )}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90 transition-colors px-4 py-2 rounded-full shadow-lg shadow-primary/20"
+              onMouseEnter={() => setCursorType('link')}
+              onMouseLeave={() => setCursorType('default')}
+            >
+              <ExternalLink size={16} />
+              <span>Live Demo</span>
+            </a>
           )}
         </div>
+        <p className="text-lg md:text-xl text-muted-foreground/90 max-w-3xl mt-4 leading-relaxed">
+          {project.description}
+        </p>
       </div>
+
+      {ProjectComponent ? (
+        <div className="w-full mt-8">
+          <ProjectComponent />
+        </div>
+      ) : (
+        <div className="w-full mt-8 flex items-center justify-center p-12 bg-secondary/20 rounded-3xl border border-white/5">
+          <p className="text-muted-foreground text-center">Interactive component not available for this project.</p>
+        </div>
+      )}
     </div>
   );
 };

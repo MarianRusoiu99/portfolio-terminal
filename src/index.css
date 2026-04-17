@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,26 +6,48 @@
 
 @layer base {
   :root {
-    --background: 240 10% 11%; /* #1e1d2f - Catppuccin Mocha base */
-    --foreground: 240 10% 85%; /* #cad3f5 - Catppuccin Mocha text */
-    --card: 240 10% 15%; /* #24273a - Catppuccin Mocha surface0 */
-    --card-foreground: 240 10% 85%;
-    --popover: 240 10% 11%;
-    --popover-foreground: 240 10% 85%;
-    --primary: 317 39% 72%; /* #cba6f7 - Catppuccin Mocha lavender */
-    --primary-foreground: 240 10% 11%;
-    --secondary: 240 10% 20%; /* #363a4f - Catppuccin Mocha surface1 */
-    --secondary-foreground: 240 10% 85%;
-    --muted: 240 10% 20%;
-    --muted-foreground: 240 7% 68%; /* #a6adc8 - Catppuccin Mocha subtext0 */
-    --accent: 317 39% 72%; /* #cba6f7 - Catppuccin Mocha lavender */
-    --accent-foreground: 240 10% 11%;
-    --destructive: 350 71% 60%; /* #f38ba8 - Catppuccin Mocha red */
-    --destructive-foreground: 240 10% 11%;
-    --border: 240 10% 25%; /* #494d64 - Catppuccin Mocha surface2 */
-    --input: 240 10% 25%;
-    --ring: 265 89% 78%; /* #89b4fa - Catppuccin Mocha blue */
-    --radius: 0.5rem;
+    --background: 240 5% 96%;
+    --foreground: 240 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+    --primary: 270 40% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 90%;
+    --secondary-foreground: 240 10% 10%;
+    --muted: 240 5% 90%;
+    --muted-foreground: 240 5% 45%;
+    --accent: 270 40% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 270 40% 45%;
+    --radius: 1.5rem;
+  }
+
+  .dark {
+    --background: 240 6% 10%;
+    --foreground: 240 5% 96%;
+    --card: 240 5% 13%;
+    --card-foreground: 240 5% 96%;
+    --popover: 240 5% 13%;
+    --popover-foreground: 240 5% 96%;
+    --primary: 270 40% 65%;
+    --primary-foreground: 240 5% 10%;
+    --secondary: 240 4% 18%;
+    --secondary-foreground: 240 5% 96%;
+    --muted: 240 4% 18%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 270 40% 65%;
+    --accent-foreground: 240 5% 10%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 4% 18%;
+    --input: 240 4% 18%;
+    --ring: 270 40% 65%;
   }
 }
 
@@ -37,7 +59,7 @@
     @apply scroll-smooth;
   }
   body {
-    @apply bg-background text-foreground antialiased font-mono;
+    @apply bg-background text-foreground antialiased font-sans;
     cursor: none;
   }
 
@@ -59,5 +81,8 @@
   }
   .animate-blink {
     animation: blink 1s step-end infinite;
+  }
+  .bento-card {
+    @apply bg-card border border-white/5 shadow-sm rounded-3xl p-6 md:p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10 hover:shadow-md;
   }
 }
