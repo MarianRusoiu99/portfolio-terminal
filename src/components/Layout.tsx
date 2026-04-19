@@ -125,7 +125,7 @@ const Layout = () => {
                 key={route.value}
                 onClick={() => handleTabChange(route.value)}
                 className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-center gap-2 ${
-                  isActive && !isContact
+                  isActive
                     ? "text-white"
                     : "text-primary"
                 }`}
@@ -140,7 +140,7 @@ const Layout = () => {
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   <Icon className="w-4 h-4 shrink-0" />
                   <span className={`${isActive ? 'inline-block' : 'hidden sm:inline-block'}`}>{route.label}</span>
-                  {isContact && !isActive && <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />}
+                  {isContact && !isActive && <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-foreground animate-pulse" />}
                 </span>
               </button>
             );

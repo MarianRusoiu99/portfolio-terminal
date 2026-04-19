@@ -22,37 +22,39 @@ const TerminalCursor: React.FC = () => {
 
     const handleMouseMove = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const interactive = target.closest('button, a, input, select, textarea, [role="button"], [data-interactive="true"]');
+      
+      const interactive = target.closest('button, a, [role="button"], [data-interactive="true"]');
       
       if (interactive) {
-        setIsHovered(true);
-        const rect = interactive.getBoundingClientRect();
-        
-        mouseX.set(rect.left + rect.width / 2);
-        mouseY.set(rect.top + rect.height / 2);
-        
-        const padding = 12;
-        width.set(rect.width + padding);
-        height.set(rect.height + padding);
-        
-        // Get the element's actual border-radius
-        const computedStyle = window.getComputedStyle(interactive);
-        const br = parseFloat(computedStyle.borderRadius) || 0;
-        
-        // If element has rounded corners (> 8px), follow that curve
-        // If element has straight/slight corners, use a subtle rounded (8px)
-        if (br > 8) {
-          borderRadius.set(br + padding / 4); // Follow the curve
-        } else {
-          borderRadius.set(8); // Subtle rounded, not pill
+       
+          setIsHovered(true);
+          
+          const rect = interactive.getBoundingClientRect();
+          
+          mouseX.set(rect.left + rect.width / 2);
+          mouseY.set(rect.top + rect.height / 2);
+          
+          // Match exact button dimensions
+          width.set(rect.width + 8);
+          height.set(rect.height);
+          
+          // Match exact border-radius of the button
+          const computedStyle = window.getComputedStyle(interactive);
+          const br = parseFloat(computedStyle.borderRadius) || 0;
+          borderRadius.set(br);
         }
-      } else {
-        setIsHovered(false);
-        mouseX.set(e.clientX);
-        mouseY.set(e.clientY);
-        width.set(12);
-        height.set(12);
-        borderRadius.set(4);
+       else {
+        if (isHovered) {
+          setIsHovered(false);
+          mouseX.set(e.clientX);
+          mouseY.set(e.clientY);
+          width.set(12);
+          height.set(12);
+          borderRadius.set(4);
+        } else {
+          mouseX.set(e.clientX);
+          mouseY.set(e.clientY);
+        }
       }
     };
 
@@ -68,7 +70,7 @@ const TerminalCursor: React.FC = () => {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [mouseX, mouseY, width, height, borderRadius, opacity, scale]);
+  }, [mouseX, mouseY, width, height, borderRadius, opacity, scale, isHovered]);
 
   return (
     <motion.div
