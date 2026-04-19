@@ -51,6 +51,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "card-overlay": {
+          DEFAULT: "hsl(var(--card-overlay))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

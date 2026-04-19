@@ -10,6 +10,7 @@ import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
+import Bookmarks from "@/components/Bookmarks";
 
 type TabComponent = ComponentType;
 
@@ -34,6 +35,7 @@ const tabComponentMap: Record<string, TabComponent | undefined> = {
   projects: Projects,
   skills: Skills,
   contact: Contact,
+  bookmarks: Bookmarks,
 };
 
 const commands = data.commands as CommandEntry[];

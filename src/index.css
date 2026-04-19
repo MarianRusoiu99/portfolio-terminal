@@ -6,48 +6,50 @@
 
 @layer base {
   :root {
-    --background: 240 5% 96%;
-    --foreground: 240 10% 10%;
+    --background: 220 13% 91%;
+    --foreground: 220 17% 29%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
+    --card-foreground: 220 17% 29%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
-    --primary: 270 40% 45%;
+    --popover-foreground: 220 17% 29%;
+    --primary: 266 83% 58%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 90%;
-    --secondary-foreground: 240 10% 10%;
-    --muted: 240 5% 90%;
-    --muted-foreground: 240 5% 45%;
-    --accent: 270 40% 45%;
+    --secondary: 220 13% 86%;
+    --secondary-foreground: 220 17% 29%;
+    --muted: 220 13% 86%;
+    --muted-foreground: 220 10% 45%;
+    --accent: 266 83% 58%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
+    --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 270 40% 45%;
+    --border: 220 13% 86%;
+    --input: 220 13% 86%;
+    --ring: 266 83% 58%;
     --radius: 1.5rem;
+    --card-overlay: 220 13% 92%;
   }
 
   .dark {
-    --background: 240 6% 10%;
-    --foreground: 240 5% 96%;
-    --card: 240 5% 13%;
-    --card-foreground: 240 5% 96%;
-    --popover: 240 5% 13%;
-    --popover-foreground: 240 5% 96%;
-    --primary: 270 40% 65%;
-    --primary-foreground: 240 5% 10%;
-    --secondary: 240 4% 18%;
-    --secondary-foreground: 240 5% 96%;
-    --muted: 240 4% 18%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 270 40% 65%;
-    --accent-foreground: 240 5% 10%;
+    --background: 223 30% 9%;
+    --foreground: 223 25% 89%;
+    --card: 223 30% 14%;
+    --card-foreground: 223 25% 89%;
+    --popover: 223 30% 14%;
+    --popover-foreground: 223 25% 89%;
+    --primary: 266 83% 78%;
+    --primary-foreground: 223 30% 9%;
+    --secondary: 223 28% 18%;
+    --secondary-foreground: 223 25% 89%;
+    --muted: 223 28% 18%;
+    --muted-foreground: 223 18% 65%;
+    --accent: 266 83% 78%;
+    --accent-foreground: 223 30% 9%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 4% 18%;
-    --input: 240 4% 18%;
-    --ring: 270 40% 65%;
+    --border: 223 28% 18%;
+    --input: 223 28% 18%;
+    --ring: 266 83% 78%;
+    --card-overlay: 223 30% 12%;
   }
 }
 
@@ -83,6 +85,6 @@
     animation: blink 1s step-end infinite;
   }
   .bento-card {
-    @apply bg-card border border-white/5 shadow-sm rounded-3xl p-6 md:p-8 backdrop-blur-xl transition-all duration-300 hover:border-white/10 hover:shadow-md;
+    @apply bg-muted/30 border border-border/50 shadow-sm rounded-3xl p-6 md:p-8 backdrop-blur-xl transition-all duration-300 hover:border-border hover:shadow-md;
   }
 }

@@ -39,11 +39,10 @@ export const useKaraKeepBookmarks = (): UseKaraKeepBookmarksReturn => {
       });
 
       if (!response.ok) {
-        // Handle specific error cases
         if (response.status === 403) {
           const errorText = await response.text();
           if (errorText.includes('IP is not whitelisted')) {
-            throw new Error('Webhook access restricted: IP not whitelisted. Using cached bookmarks.');
+            throw new Error('Webhook access restricted: IP not whitelisted.');
           } else {
             throw new Error('Access forbidden: Check webhook permissions');
           }
@@ -51,7 +50,14 @@ export const useKaraKeepBookmarks = (): UseKaraKeepBookmarksReturn => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const rawData: WebhookResponse = await response.json();
+      const text = await response.text();
+      let rawData: WebhookResponse;
+      try {
+        rawData = JSON.parse(text);
+      } catch (e) {
+        throw new Error('Invalid JSON response from webhook');
+      }
+
       setRawResponse(rawData); // Store for debugging
       
       // Use the flexible mapper to extract bookmarks
@@ -59,13 +65,14 @@ export const useKaraKeepBookmarks = (): UseKaraKeepBookmarksReturn => {
       
       if (mappedBookmarks.length === 0) {
         console.warn('No bookmarks found in webhook response:', rawData);
+        setBookmarks([]);
+      } else {
+        setBookmarks(mappedBookmarks);
       }
-      
-      setBookmarks(mappedBookmarks);
     } catch (err) {
       console.error('Error fetching KaraKeep bookmarks:', err);
       setError(err instanceof Error ? err.message : 'Failed to fetch bookmarks');
-      setBookmarks([]); // Fallback to empty array
+      setBookmarks([]); // Empty array instead of fallback
     } finally {
       setLoading(false);
     }

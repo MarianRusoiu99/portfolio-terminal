@@ -1,26 +1,29 @@
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Briefcase, Code2, Wrench, Mail, User } from "lucide-react";
+import { Briefcase, Code2, Wrench, Mail, User, Link2 } from "lucide-react";
 import { Hero } from "@/components/Hero";
 import { Footer } from "@/components/Footer";
 
 const tabRoutes = [
-  { value: "about", label: "About", path: "/", icon: User },
+  { value: "about", label: "About", path: "/about", icon: User },
   { value: "projects", label: "Projects", path: "/projects", icon: Code2 },
   { value: "experience", label: "Experience", path: "/experience", icon: Briefcase },
   { value: "skills", label: "Skills", path: "/skills", icon: Wrench },
   { value: "contact", label: "Contact", path: "/contact", icon: Mail },
+  // { value: "bookmarks", label: "Bookmarks", path: "/bookmarks", icon: Link2 },
 ];
 
 const Layout = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  let activeValue = "about";
-  if (location.pathname.startsWith("/projects")) activeValue = "projects";
+  let activeValue = "";
+  if (location.pathname.startsWith("/about")) activeValue = "about";
+  else if (location.pathname.startsWith("/projects")) activeValue = "projects";
   else if (location.pathname.startsWith("/experience")) activeValue = "experience";
   else if (location.pathname.startsWith("/skills")) activeValue = "skills";
   else if (location.pathname.startsWith("/contact")) activeValue = "contact";
+  else if (location.pathname.startsWith("/bookmarks")) activeValue = "bookmarks";
 
   const handleTabChange = (nextValue: string) => {
     const target = tabRoutes.find((route) => route.value === nextValue);
@@ -33,29 +36,34 @@ const Layout = () => {
       {/* Ambient background glows for Editorial feel */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] mix-blend-screen" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-[150px] mix-blend-screen" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] mix-blend-screen" />
       </div>
 
       <div className="flex-1 flex max-w-[1200px] mx-auto w-full relative">
-        <main className="flex-1 w-full max-w-3xl mx-auto px-4 pt-6 pb-24 md:pt-10 md:pb-32 flex flex-col gap-10 md:gap-14 mb-6 md:mr-32 lg:mr-48">
-          <div className="flex flex-col gap-4 w-full">
-            <Hero />
-          </div>
+        <div className="flex-1 w-full max-w-3xl lg:max-w-4xl mx-auto px-4 sm:px-6 pt-6 pb-24 md:pt-10 md:pb-4 flex flex-col md:mr-32 lg:mr-48">
+          <main className="flex flex-col gap-2 md:gap-2 w-full flex-1">
+            <div className="flex flex-col gap-4 w-full">
+              <Hero />
+            </div>
 
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
-          >
-            <Outlet />
-          </motion.div>
-        </main>
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full"
+            >
+              <Outlet />
+            </motion.div>
+          </main>
+          <div className="mt-10 md:mt-12">
+            <Footer />
+          </div>
+        </div>
 
         {/* Floating Sticky Navigation at the Right */}
         <aside className="hidden md:flex fixed right-6 lg:right-12 top-1/2 -translate-y-1/2 z-50">
-          <nav className="flex flex-col gap-3 items-center">
+          <nav className="flex flex-col gap-3 items-end">
             {tabRoutes.map((route) => {
               const isActive = activeValue === route.value;
               const isContact = route.value === "contact";
@@ -89,7 +97,7 @@ const Layout = () => {
                   
                   <div className={`absolute flex items-center justify-center transition-all duration-300 z-10 ${isActive ? 'left-4' : 'left-1/2 -translate-x-1/2 group-hover:left-4 group-hover:-translate-x-0'}`}>
                     <Icon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
-                    {isContact && !isActive && <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 animate-pulse border border-background" />}
+                    {isContact && !isActive && <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-primary animate-pulse border border-background" />}
                   </div>
                   
                   <span 
@@ -106,7 +114,7 @@ const Layout = () => {
 
       {/* Mobile Sticky Navigation at the Bottom */}
       <div className="md:hidden fixed bottom-6 z-50 w-full flex justify-center px-4 pointer-events-none">
-        <nav className="flex items-center gap-1 p-1.5 bg-background/80 backdrop-blur-xl border border-white/5 shadow-2xl rounded-full overflow-x-auto max-w-full pointer-events-auto">
+        <nav className="flex items-center gap-1 p-1.5 bg-background/80 backdrop-blur-xl border border-border/50 shadow-2xl rounded-full overflow-x-auto max-w-full pointer-events-auto">
           {tabRoutes.map((route) => {
             const isActive = activeValue === route.value;
             const isContact = route.value === "contact";
@@ -139,8 +147,6 @@ const Layout = () => {
           })}
         </nav>
       </div>
-
-      <Footer />
     </div>
   );
 };

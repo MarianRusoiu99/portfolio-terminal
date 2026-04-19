@@ -1,5 +1,3 @@
-
-
 {
   "name": "Valentin Anicza",
   "headline": "I Build Things for the Web",
@@ -26,12 +24,36 @@
   ],
   "about": "I build beautiful, functional, and accessible digital experiences. By bridging the gap between creative vision and technical execution, I turn complex problems into elegant solutions.",
   "commands": [
-    { "value": "about", "label": "about", "path": "/" },
-    { "value": "experience", "label": "experience", "path": "/experience" },
-    { "value": "projects", "label": "projects", "path": "/projects" },
-    { "value": "skills", "label": "skills", "path": "/skills" },
-    { "value": "bookmarks", "label": "bookmarks", "path": "/bookmarks" },
-    { "value": "contact", "label": "contact", "path": "/contact" }
+    {
+      "value": "about",
+      "label": "about",
+      "path": "/"
+    },
+    {
+      "value": "experience",
+      "label": "experience",
+      "path": "/experience"
+    },
+    {
+      "value": "projects",
+      "label": "projects",
+      "path": "/projects"
+    },
+    {
+      "value": "skills",
+      "label": "skills",
+      "path": "/skills"
+    },
+    {
+      "value": "bookmarks",
+      "label": "bookmarks",
+      "path": "/bookmarks"
+    },
+    {
+      "value": "contact",
+      "label": "contact",
+      "path": "/contact"
+    }
   ],
   "experience": [
     {
@@ -41,61 +63,132 @@
       "period": "September 2022 - August 2025 · Timișoara, TM",
       "description": "Led development of diverse projects spanning AI, web, and mobile applications, with expertise in cloud infrastructure and DevOps automation.",
       "tags": [
-        "CI/CD automation", "Full-stack development", "Cloud deployment", "Docker & Kubernetes", 
-        "API integration", "Web performance optimization", "Application monitoring & testing", 
-        "Self-hosted infrastructure", "Agile methodologies"
+        "CI/CD automation",
+        "Full-stack development",
+        "Cloud deployment",
+        "Docker & Kubernetes",
+        "API integration",
+        "Web performance optimization",
+        "Application monitoring & testing",
+        "Self-hosted infrastructure",
+        "Agile methodologies"
       ],
       "accomplishments": [
         {
           "title": "AI Storybook App",
           "description": "Worked on an interactive multimedia story generation system, integrated Stripe for subscription management, and implemented real-time AI content generation.",
-          "tags": ["React", "Nest.js", "OpenAI API", "DALL-E", "PlayHT", "Azure", "Docker", "Stripe"]
+          "tags": [
+            "React",
+            "Nest.js",
+            "OpenAI API",
+            "DALL-E",
+            "PlayHT",
+            "Azure",
+            "Docker",
+            "Stripe"
+          ]
         },
         {
           "title": "AI Customer Support Evaluation Tool",
           "description": "Built CI/CD pipeline with GitHub Actions, implemented conversation analysis dashboard, and deployed scalable infrastructure on AWS.",
-          "tags": ["Django", "React", "Docker", "PostgreSQL", "AWS EC2"]
+          "tags": [
+            "Django",
+            "React",
+            "Docker",
+            "PostgreSQL",
+            "AWS EC2"
+          ]
         },
         {
           "title": "Doctor Assist App",
           "description": "Worked on a mobile application that transcribes medical consultations into structured forms using AI. Implemented offline-first architecture, secured data storage, and optimized real-time transcription performance.",
-          "tags": ["React Native", "FastAPI", "Whisper API", "AWS S3", "Cognito"]
+          "tags": [
+            "React Native",
+            "FastAPI",
+            "Whisper API",
+            "AWS S3",
+            "Cognito"
+          ]
         },
         {
           "title": "Self-Hosted Business Infrastructure",
           "description": "Designed and deployed internal infrastructure for CI/CD, monitoring, and documentation. Automated container orchestration and built a comprehensive observability stack.",
-          "tags": ["Docker", "Portainer", "Traefik", "GitHub Actions", "Grafana", "Prometheus", "Loki", "Gitea", "Wiki.js"]
+          "tags": [
+            "Docker",
+            "Portainer",
+            "Traefik",
+            "GitHub Actions",
+            "Grafana",
+            "Prometheus",
+            "Loki",
+            "Gitea",
+            "Wiki.js"
+          ]
         },
         {
           "title": "Peerconcept.com - Corporate Website",
           "description": "Built modern corporate website with server-side rendering for optimal SEO performance. Integrated headless CMS and optimized Core Web Vitals.",
-          "tags": ["Next.js", "Strapi", "Tailwind CSS", "Docker", "Nginx"]
+          "tags": [
+            "Next.js",
+            "Strapi",
+            "Tailwind CSS",
+            "Docker",
+            "Nginx"
+          ]
         },
         {
           "title": "OutSnapped Photo Booth Platform",
           "description": "Maintained and optimized a nationwide photo booth platform. Reduced load times by ~40% using Cloudflare CDN and enhanced SEO.",
-          "tags": ["WordPress", "JavaScript", "Cloudflare", "Oxygen Builder"]
+          "tags": [
+            "WordPress",
+            "JavaScript",
+            "Cloudflare",
+            "Oxygen Builder"
+          ]
         }
       ]
     }
   ],
   "skills": [
-    "React", "TypeScript", "Next.js", "Node.js", "GraphQL", "PostgreSQL",
-    "Nest.js", "Prisma", "Tailwind CSS", "Framer Motion", "Docker", "AWS", "Figma",
-    "JavaScript", "HTML5", "CSS3", "Three.js", "Go", "Python", "Django", "Nginx",
-    "Git", "CI/CD", "Kubernetes", "Linux", "Bash", "Playwright", "Visual Testing", "CLI Tools"
+    "React",
+    "TypeScript",
+    "Next.js",
+    "Node.js",
+    "GraphQL",
+    "PostgreSQL",
+    "Nest.js",
+    "Prisma",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Docker",
+    "AWS",
+    "Figma",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "Three.js",
+    "Go",
+    "Python",
+    "Django",
+    "Nginx",
+    "Git",
+    "CI/CD",
+    "Kubernetes",
+    "Linux",
+    "Bash",
+    "Playwright",
+    "Visual Testing",
+    "CLI Tools"
   ],
   "projects": [
-   
-     {
+    {
       "slug": "resume-manager",
       "name": "Resume Manager",
       "description": "AI-Powered Resume Builder & Optimizer",
       "component": "ResumeManager",
       "githubUrl": "https://github.com/MarianRusoiu99/resume-manager",
-      "period": "08/2025 - Present"
+      "period": "08/2025 - Present", "image": "https://via.placeholder.com/256x160"
     }
-  
   ],
   "contact": {
     "title": "Let's Work Together",
@@ -106,15 +199,24 @@
     "command": "mail -s \"Project Idea\" hello@valentinanicza.click"
   },
   "contactForm": {
-    "name": { "label": "Name", "placeholder": "Your name" },
-    "email": { "label": "Email", "placeholder": "your@email.com" },
-    "subject": { "label": "Subject", "placeholder": "What's this about?" },
-    "message": { "label": "Message", "placeholder": "Tell me about your project or opportunity..." },
+    "name": {
+      "label": "Name",
+      "placeholder": "Your name"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "your@email.com"
+    },
+    "subject": {
+      "label": "Subject",
+      "placeholder": "What's this about?"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Tell me about your project or opportunity..."
+    },
     "button": "Send Message"
   },
-  "karaKeepBookmarks": [
-    
-  ],
   "footer": {
     "title": "Let's build something together.",
     "cta": "Get in touch",

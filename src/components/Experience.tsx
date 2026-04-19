@@ -1,22 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import data from "@/lib/data.json";
-import { ArrowUpRight, Building2, Calendar } from "lucide-react";
+import { getExperience } from "@/lib/data";
+import { ArrowUpRight } from "lucide-react";
 import { useCursor } from "@/context/CursorContext";
 
 const ExperienceComponent = () => {
   const { setCursorType } = useCursor();
+  const experience = getExperience();
 
   return (
-    <div className="flex flex-col gap-10 w-full">
+    <div className="flex flex-col gap-6 w-full">
       <div className="mb-1">
         <h2 className="text-3xl font-bold tracking-tight text-foreground mb-3">Experience</h2>
         <p className="text-base text-muted-foreground/80">My professional journey in tech.</p>
       </div>
 
-      <div className="flex flex-col gap-10">
-        {data.experience.map((exp, index) => (
+      <div className="flex flex-col gap-6">
+        {experience.map((exp, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
@@ -49,11 +50,11 @@ const ExperienceComponent = () => {
                 </p>
                 
                 {exp.tags && (
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-border/50">
                     {exp.tags.slice(0, 4).map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs font-mono text-muted-foreground bg-white/5 px-3 py-1.5 rounded-full"
+                        className="text-xs font-mono text-muted-foreground bg-muted/30 px-3 py-1.5 rounded-full"
                       >
                         {tag}
                       </span>

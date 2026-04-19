@@ -1,19 +1,26 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 
+// Stub context so we don't break existing components that call useCursor()
+// The new cursor is completely autonomous!
 type CursorType = 'default' | 'link';
 
 interface CursorContextProps {
   cursorType: CursorType;
   setCursorType: (type: CursorType) => void;
+  cursorImage: string | null;
+  setCursorImage: (image: string | null) => void;
 }
 
 const CursorContext = createContext<CursorContextProps | undefined>(undefined);
 
 export const CursorProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [cursorType, setCursorType] = useState<CursorType>('default');
-
   return (
-    <CursorContext.Provider value={{ cursorType, setCursorType }}>
+    <CursorContext.Provider value={{ 
+        cursorType: 'default', 
+        setCursorType: () => {}, 
+        cursorImage: null, 
+        setCursorImage: () => {} 
+    }}>
       {children}
     </CursorContext.Provider>
   );
