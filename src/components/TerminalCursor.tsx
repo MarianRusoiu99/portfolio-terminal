@@ -18,43 +18,68 @@ const TerminalCursor: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => {
+      return window.innerWidth < 800 || 'ontouchstart' in window;
+    };
+    
+    if (checkMobile()) return;
+    
     opacity.set(1);
 
     const handleMouseMove = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       
-      const interactive = target.closest('button, a, [role="button"], [data-interactive="true"]');
+      // Find all interactive ancestors and get the largest one
+      const interactiveElements: HTMLElement[] = [];
+      let current: HTMLElement | null = target;
       
-      if (interactive) {
-       
-          setIsHovered(true);
-          
-          const rect = interactive.getBoundingClientRect();
-          
-          mouseX.set(rect.left + rect.width / 2);
-          mouseY.set(rect.top + rect.height / 2);
-          
-          // Match exact button dimensions
-          width.set(rect.width + 8);
-          height.set(rect.height);
-          
-          // Match exact border-radius of the button
-          const computedStyle = window.getComputedStyle(interactive);
-          const br = parseFloat(computedStyle.borderRadius) || 0;
-          borderRadius.set(br);
+      while (current) {
+        if (current.matches('button, a, [role="button"], [data-interactive="true"]')) {
+          interactiveElements.push(current);
         }
-       else {
-        if (isHovered) {
-          setIsHovered(false);
-          mouseX.set(e.clientX);
-          mouseY.set(e.clientY);
-          width.set(12);
-          height.set(12);
-          borderRadius.set(4);
+        current = current.parentElement;
+      }
+      
+      if (interactiveElements.length > 0) {
+        // Find the largest element by area
+        let largestElement = interactiveElements[0];
+        let largestArea = 0;
+        
+        for (const el of interactiveElements) {
+          const rect = el.getBoundingClientRect();
+          const area = rect.width * rect.height;
+          if (area > largestArea) {
+            largestArea = area;
+            largestElement = el;
+          }
+        }
+        
+        setIsHovered(true);
+        
+        const rect = largestElement.getBoundingClientRect();
+        
+        mouseX.set(rect.left + rect.width / 2);
+        mouseY.set(rect.top + rect.height / 2);
+        
+        const padding = 12;
+        width.set(rect.width + padding);
+        height.set(rect.height + padding);
+        
+        const computedStyle = window.getComputedStyle(largestElement);
+        const br = parseFloat(computedStyle.borderRadius) || 0;
+        
+        if (br > 8) {
+          borderRadius.set(br + padding / 4);
         } else {
-          mouseX.set(e.clientX);
-          mouseY.set(e.clientY);
+          borderRadius.set(8);
         }
+      } else {
+        setIsHovered(false);
+        mouseX.set(e.clientX);
+        mouseY.set(e.clientY);
+        width.set(12);
+        height.set(12);
+        borderRadius.set(4);
       }
     };
 
@@ -70,7 +95,22 @@ const TerminalCursor: React.FC = () => {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [mouseX, mouseY, width, height, borderRadius, opacity, scale, isHovered]);
+  }, [mouseX, mouseY, width, height, borderRadius, opacity, scale]);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 800 || 'ontouchstart' in window);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (isMobile) return null;
 
   return (
     <motion.div
