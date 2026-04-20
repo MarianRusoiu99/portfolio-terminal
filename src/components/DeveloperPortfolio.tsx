@@ -15,12 +15,12 @@ import { getProjects, getSkills, getContact, getName, getHeadline, getSocials } 
 
 const CONFIG = {
     brand: {
-        name: getName().toUpperCase(),
-        shortName: getName().split(" ")[0].toUpperCase(),
-        role: getHeadline(),
-        location: "Timișoara, RO",
-        availability: "Available for new projects",
-        email: getContact().email,
+        name: "JOHN DOE",
+        shortName: "JOHN",
+        role: "Visual Storyteller & Digital Craftsman",
+        location: "Neo-Tokyo, JP",
+        availability: "Available for Q4 2024",
+        email: "hello@johndoe.design",
     },
     socials: getSocials().map(s => ({
         name: s.label,

@@ -196,6 +196,14 @@
       "component": "DeveloperPortfolio",
       "period": "04/2026 - Present",
       "image": "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=256"
+    },
+    {
+      "slug": "minimal-portfolio",
+      "name": "Minimal Portfolio",
+      "description": "Sophisticated Minimalist Portfolio",
+      "component": "MinimalPortfolio",
+      "period": "2024 - Present",
+      "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=256"
     }
   ],
   "contact": {
