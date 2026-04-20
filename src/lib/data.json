@@ -188,6 +188,14 @@
       "component": "ResumeManager",
       "githubUrl": "https://github.com/MarianRusoiu99/resume-manager",
       "period": "08/2025 - Present", "image": "https://via.placeholder.com/256x160"
+    },
+    {
+      "slug": "developer-portfolio",
+      "name": "Developer Portfolio",
+      "description": "Premium Portfolio Template for Developers",
+      "component": "DeveloperPortfolio",
+      "period": "04/2026 - Present",
+      "image": "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=256"
     }
   ],
   "contact": {

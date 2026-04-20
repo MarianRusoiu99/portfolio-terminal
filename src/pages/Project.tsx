@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from "react-router-dom";
 import { ResumeManager } from "@/components/ResumeManager";
+import { DeveloperPortfolio } from "@/components/DeveloperPortfolio";
 import { getProjects } from "@/lib/data";
 import { useCursor } from '@/context/CursorContext';
 import { motion } from "framer-motion";
 import { Github, ExternalLink, ArrowLeft, Calendar, Folder } from "lucide-react";
 
 const componentMap = {
-  ResumeManager
+  ResumeManager,
+  DeveloperPortfolio
 };
 
 const ProjectPage = () => {
